@@ -1,0 +1,19 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/maps/
+logs/
+checkpoints/
+runs/
+trained_models/
+results/
+.vscode/
+*.db
+*.logcache/
+colabd access token.txt
+sessions.json
+users.db
+
+users.json

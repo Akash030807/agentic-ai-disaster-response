@@ -1,0 +1,53 @@
+# Base configuration for Disaster Response AI Training - Week 4
+
+environment:
+  type: "simple_grid" # Options: simple_grid, real_map
+  grid_size: 20
+  num_civilians: 15
+  num_disasters: 5
+  max_steps: 1000
+  render_mode: null # Options: null, human, rgb_array
+
+training:
+  algorithm: "PPO" # Options: PPO, A2C, DQN, Custom
+  total_timesteps: 100000
+  learning_rate: 0.0003
+  gamma: 0.99
+  batch_size: 64
+  n_epochs: 10
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay: 0.995
+
+agents:
+  num_drones: 2
+  num_ambulances: 2
+  num_rescue_teams: 1
+  observation_range: 5
+  communication_range: 10
+
+rewards:
+  civilian_rescued: 100
+  civilian_injured: -50
+  disaster_contained: 80
+  step_penalty: -0.1
+  collaboration_bonus: 20
+  efficiency_bonus: 10
+
+marl:
+  use_centralized_critic: true
+  use_parameter_sharing: true
+  training_frequency: 100
+  evaluation_frequency: 1000
+
+logging:
+  tensorboard_log: "./logs/tensorboard/"
+  model_save_path: "./models/"
+  evaluation_save_path: "./evaluations/"
+  log_interval: 100
+
+advanced:
+  use_attention: false
+  use_communication: true
+  use_hierarchical: false
+  curriculum_learning: false
